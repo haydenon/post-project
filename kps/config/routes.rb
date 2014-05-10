@@ -1,4 +1,6 @@
 Kps::Application.routes.draw do
+  resources :route_segments
+
   resources :locations
 
   get "kps/index"

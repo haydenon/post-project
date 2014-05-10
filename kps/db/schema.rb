@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510062420) do
+ActiveRecord::Schema.define(version: 20140510090336) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "route_segments", force: true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "active"
+    t.decimal  "cost"
+    t.integer  "duration"
+    t.decimal  "costVolume"
+    t.decimal  "costWeight"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
