@@ -1,0 +1,41 @@
+<h1>Listing route_segments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Active</th>
+      <th>Cost</th>
+      <th>Duration</th>
+      <th>Costvolume</th>
+      <th>Costweight</th>
+      <th>Company</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @route_segments.each do |route_segment| %>
+      <tr>
+        <td><%= route_segment.fromLocation.name %></td>
+        <td><%= route_segment.toLocation.name %></td>
+        <td><%= route_segment.active %></td>
+        <td><%= route_segment.cost %></td>
+        <td><%= route_segment.duration %></td>
+        <td><%= route_segment.costVolume %></td>
+        <td><%= route_segment.costWeight %></td>
+        <td><%= route_segment.company_id %></td>
+        <td><%= link_to 'Show', route_segment %></td>
+        <td><%= link_to 'Edit', edit_route_segment_path(route_segment) %></td>
+        <td><%= link_to 'Destroy', route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Route segment', new_route_segment_path %>

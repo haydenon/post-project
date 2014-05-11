@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @route_segment.from_id %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @route_segment.to_id %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @route_segment.active %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @route_segment.cost %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @route_segment.duration %>
+</p>
+
+<p>
+  <strong>Costvolume:</strong>
+  <%= @route_segment.costVolume %>
+</p>
+
+<p>
+  <strong>Costweight:</strong>
+  <%= @route_segment.costWeight %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @route_segment.company_id %>
+</p>
+
+<%= link_to 'Edit', edit_route_segment_path(@route_segment) %> |
+<%= link_to 'Back', route_segments_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@route_segment) do |f| %>
+  <% if @route_segment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@route_segment.errors.count, "error") %> prohibited this route_segment from being saved:</h2>
+
+      <ul>
+      <% @route_segment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from_id %><br>
+    <%= f.number_field :from_id %>
+  </div>
+  <div class="field">
+    <%= f.label :to_id %><br>
+    <%= f.number_field :to_id %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br>
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :costVolume %><br>
+    <%= f.text_field :costVolume %>
+  </div>
+  <div class="field">
+    <%= f.label :costWeight %><br>
+    <%= f.text_field :costWeight %>
+  </div>
+  <div class="field">
+    <%= f.label :company_id %><br>
+    <%= f.number_field :company_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
