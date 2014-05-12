@@ -1,0 +1,35 @@
+<h1>Listing mail_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route</th>
+      <th>Price</th>
+      <th>Weight</th>
+      <th>Volume</th>
+      <th>Priority</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mail_requests.each do |mail_request| %>
+      <tr>
+        <td><%= mail_request.mail_route_id %></td>
+        <td><%= mail_request.price %></td>
+        <td><%= mail_request.weight %></td>
+        <td><%= mail_request.volume %></td>
+        <td><%= mail_request.priority.name %></td>
+        <td><%= link_to 'Show', mail_request %></td>
+        <td><%= link_to 'Edit', edit_mail_request_path(mail_request) %></td>
+        <td><%= link_to 'Destroy', mail_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mail request', new_mail_request_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mail route:</strong>
+  <%= @mail_request.mail_route_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @mail_request.price %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @mail_request.weight %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @mail_request.volume %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @mail_request.priority_id %>
+</p>
+
+<%= link_to 'Edit', edit_mail_request_path(@mail_request) %> |
+<%= link_to 'Back', mail_requests_path %>

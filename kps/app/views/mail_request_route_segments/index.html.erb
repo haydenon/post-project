@@ -1,0 +1,29 @@
+<h1>Listing mail_request_route_segments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route segment</th>
+      <th>Mail request</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mail_request_route_segments.each do |mail_request_route_segment| %>
+      <tr>
+        <td><%= mail_request_route_segment.segment.toLocation.name %></td>
+        <td><%= mail_request_route_segment.request.mail_route.toLocation.name %></td>
+        <td><%= link_to 'Show', mail_request_route_segment %></td>
+        <td><%= link_to 'Edit', edit_mail_request_route_segment_path(mail_request_route_segment) %></td>
+        <td><%= link_to 'Destroy', mail_request_route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mail request route segment', new_mail_request_route_segment_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Route segment:</strong>
+  <%= @mail_request_route_segment.route_segment_id %>
+</p>
+
+<p>
+  <strong>Mail request:</strong>
+  <%= @mail_request_route_segment.mail_request_id %>
+</p>
+
+<%= link_to 'Edit', edit_mail_request_route_segment_path(@mail_request_route_segment) %> |
+<%= link_to 'Back', mail_request_route_segments_path %>

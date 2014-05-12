@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>To:</strong>
+  <%= @mail_route.to_id %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @mail_route.from_id %>
+</p>
+
+<p>
+  <strong>Margin:</strong>
+  <%= @mail_route.margin %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @mail_route.priority_id %>
+</p>
+
+<%= link_to 'Edit', edit_mail_route_path(@mail_route) %> |
+<%= link_to 'Back', mail_routes_path %>

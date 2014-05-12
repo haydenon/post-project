@@ -1,0 +1,33 @@
+<%= form_for(@mail_route) do |f| %>
+  <% if @mail_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mail_route.errors.count, "error") %> prohibited this mail_route from being saved:</h2>
+
+      <ul>
+      <% @mail_route.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :from_id %><br>
+    <%= f.number_field :from_id %>
+  </div>
+  <div class="field">
+    <%= f.label :to_id %><br>
+    <%= f.number_field :to_id %>
+  </div>
+  <div class="field">
+    <%= f.label :margin %><br>
+    <%= f.text_field :margin %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_id %><br>
+    <%= f.number_field :priority_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
