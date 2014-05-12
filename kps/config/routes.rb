@@ -1,4 +1,6 @@
 Kps::Application.routes.draw do
+  resources :companies
+
   resources :mail_requests
 
   resources :mail_request_route_segments
