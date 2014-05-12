@@ -11,11 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510090336) do
+ActiveRecord::Schema.define(version: 20140512043521) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_request_route_segments", force: true do |t|
+    t.integer  "route_segment_id"
+    t.integer  "mail_request_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_requests", force: true do |t|
+    t.integer  "mail_route_id"
+    t.decimal  "price"
+    t.decimal  "weight"
+    t.decimal  "volume"
+    t.integer  "priority_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_routes", force: true do |t|
+    t.integer  "to_id"
+    t.integer  "from_id"
+    t.decimal  "margin"
+    t.integer  "priority_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "priorities", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

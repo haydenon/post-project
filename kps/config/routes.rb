@@ -1,4 +1,12 @@
 Kps::Application.routes.draw do
+  resources :mail_requests
+
+  resources :mail_request_route_segments
+
+  resources :priorities
+
+  resources :mail_routes
+
   resources :route_segments
 
   resources :locations
