@@ -13,7 +13,7 @@
 		<td><strong>To</strong></td>
 		<td><strong>Active</strong></td>
 	</tr>
-<% @company.routeSegment.each do |segment| %>
+<% @company.route_segments.each do |segment| %>
       <tr>
         <td><%= segment.fromLocation.name %></td>
 		<td><%= segment.toLocation.name %></td>

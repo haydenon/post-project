@@ -1,3 +1,3 @@
 class Company < ActiveRecord::Base
-	has_many :routeSegment, :class_name =>"RouteSegment", :foreign_key => 'company_id'
+	has_many :route_segments, :class_name =>"RouteSegment", :foreign_key => 'company_id'
 end
