@@ -18,8 +18,8 @@
     <% @mail_request_route_segments.each do |mail_request_route_segment| %>
       <tr>
         <td><%= mail_request_route_segment.route_segment_id %></td>
-		<td><%= mail_request_route_segment.segment.toLocation.name %></td>
-		<td><%= mail_request_route_segment.segment.fromLocation.name %></td>
+		<td><%= mail_request_route_segment.segment.to_location.name %></td>
+		<td><%= mail_request_route_segment.segment.from_location.name %></td>
 		<td><%= mail_request_route_segment.mail_request_id %></td>
         <td><%= mail_request_route_segment.request.created_at %></td>
         <td><%= link_to 'Show', mail_request_route_segment %></td>
