@@ -16,8 +16,8 @@
   <tbody>
     <% @mail_routes.each do |mail_route| %>
       <tr>
-		<td><%= mail_route.fromLocation.name %></td>
-        <td><%= mail_route.toLocation.name %></td>
+		<td><%= mail_route.from_location.name %></td>
+        <td><%= mail_route.to_location.name %></td>
         <td><%= mail_route.margin %></td>
         <td><%= mail_route.priority.name %></td>
         <td><%= link_to 'Show', mail_route %></td>

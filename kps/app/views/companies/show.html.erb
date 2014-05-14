@@ -15,8 +15,8 @@
 	</tr>
 <% @company.route_segments.each do |segment| %>
       <tr>
-        <td><%= segment.fromLocation.name %></td>
-		<td><%= segment.toLocation.name %></td>
+        <td><%= segment.from_location.name %></td>
+		<td><%= segment.to_location.name %></td>
         <td><%= segment.active.to_s %></td>
       </tr>
     <% end %>

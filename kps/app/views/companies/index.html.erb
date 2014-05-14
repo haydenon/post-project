@@ -15,7 +15,7 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
-		<td><%= company.route_segments.first.toLocation.name + '>' + company.route_segments.first.fromLocation.name %></td>
+		<td><%= company.route_segments.first.to_location.name + '>' + company.route_segments.first.from_location.name %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>

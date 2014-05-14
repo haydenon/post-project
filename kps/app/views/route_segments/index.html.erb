@@ -20,8 +20,8 @@
   <tbody>
     <% @route_segments.each do |route_segment| %>
       <tr>
-        <td><%= route_segment.fromLocation.name %></td>
-        <td><%= route_segment.toLocation.name %></td>
+        <td><%= route_segment.from_location.name %></td>
+        <td><%= route_segment.to_location.name %></td>
         <td><%= route_segment.active %></td>
         <td><%= route_segment.cost %></td>
         <td><%= route_segment.duration %></td>
