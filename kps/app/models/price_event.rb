@@ -1,0 +1,2 @@
+class PriceEvent < Event
+end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 1
+  destination_id: 1
+  weight: 1.5
+  volume: 1.5
+  priority_id: 1
+
+two:
+  origin_id: 1
+  destination_id: 1
+  weight: 1.5
+  volume: 1.5
+  priority_id: 1

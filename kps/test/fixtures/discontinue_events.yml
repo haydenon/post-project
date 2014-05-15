@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 1
+  destination_id: 1
+  transport_firm: MyString
+  transport_type_id: 1
+
+two:
+  origin_id: 1
+  destination_id: 1
+  transport_firm: MyString
+  transport_type_id: 1

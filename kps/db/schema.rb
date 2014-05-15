@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512053240) do
+ActiveRecord::Schema.define(version: 20140515123407) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "type"
+    t.integer  "origin_id"
+    t.integer  "destination_id"
+    t.float    "weight"
+    t.float    "volume"
+    t.integer  "priority_id"
+    t.float    "price_per_gram"
+    t.float    "price_per_cubic_cm"
+    t.integer  "transport_company_id"
+    t.integer  "transport_type_id"
+    t.string   "depart_day"
+    t.float    "depart_frequency"
+    t.float    "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

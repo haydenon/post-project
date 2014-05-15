@@ -1,0 +1,69 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :origin_id %><br>
+    <%= f.number_field :origin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.number_field :destination_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :volume %><br>
+    <%= f.text_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_id %><br>
+    <%= f.number_field :priority_id %>
+  </div>
+  <div class="field">
+    <%= f.label :price_per_gram %><br>
+    <%= f.text_field :price_per_gram %>
+  </div>
+  <div class="field">
+    <%= f.label :price_per_cubic_cm %><br>
+    <%= f.text_field :price_per_cubic_cm %>
+  </div>
+  <div class="field">
+    <%= f.label :transport_company_id %><br>
+    <%= f.number_field :transport_company_id %>
+  </div>
+  <div class="field">
+    <%= f.label :transport_type_id %><br>
+    <%= f.number_field :transport_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :depart_day %><br>
+    <%= f.text_field :depart_day %>
+  </div>
+  <div class="field">
+    <%= f.label :depart_frequency %><br>
+    <%= f.text_field :depart_frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.text_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class DiscontinueEvent < Event
+end

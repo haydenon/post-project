@@ -1,0 +1,2 @@
+class CostEvent < Event
+end

@@ -1,4 +1,7 @@
 Kps::Application.routes.draw do
+  resources :events
+
+  get "events/new"
   resources :companies
 
   resources :mail_requests

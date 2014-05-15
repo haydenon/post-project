@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  origin_id: 1
+  destination_id: 1
+  weight: 1.5
+  volume: 1.5
+  priority_id: 1
+  price_per_gram: 1.5
+  price_per_cubic_cm: 1.5
+  transport_company_id: 1
+  transport_type_id: 1
+  depart_day: MyString
+  depart_frequency: 1.5
+  duration: 1.5
+
+two:
+  type: 
+  origin_id: 1
+  destination_id: 1
+  weight: 1.5
+  volume: 1.5
+  priority_id: 1
+  price_per_gram: 1.5
+  price_per_cubic_cm: 1.5
+  transport_company_id: 1
+  transport_type_id: 1
+  depart_day: MyString
+  depart_frequency: 1.5
+  duration: 1.5

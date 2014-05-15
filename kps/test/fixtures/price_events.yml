@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 1
+  destination_id: 1
+  priority_id: 1
+  price_per_gram: 1.5
+  price_per_cubic_cm: 1.5
+
+two:
+  origin_id: 1
+  destination_id: 1
+  priority_id: 1
+  price_per_gram: 1.5
+  price_per_cubic_cm: 1.5
