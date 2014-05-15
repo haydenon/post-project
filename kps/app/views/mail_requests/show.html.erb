@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Mail route:</strong>
-  <%= @mail_request.mail_route_id %>
-</p>
+<h2>Segments</h2>
+<ol>
+  <% @mail_request.segments.each do |segment| %>
+  <li>
+    <%= segment.from_location.name + ' > ' + segment.to_location.name %>
+  </li>
+  <% end %>
+</ol>
 
 <p>
   <strong>Price:</strong>

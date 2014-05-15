@@ -13,3 +13,9 @@
 <br><%= link_to 'Priorities', controller: 'priorities' %>
 <br><%= link_to 'Route Segments', controller: 'route_segments' %>
 </p>
+<h2>Mail Requests:</h2>
+<ul>
+<% @requests.each do |request| %>
+<li><%=  link_to request.mail_route.from_location.name + ' > ' + request.mail_route.to_location.name, request %></li>
+<% end %>
+</ul>
