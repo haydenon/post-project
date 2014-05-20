@@ -2,6 +2,7 @@ Kps::Application.routes.draw do
   resources :events
 
   get "events/new"
+  
   resources :companies
 
   resources :mail_requests
@@ -15,9 +16,19 @@ Kps::Application.routes.draw do
   resources :route_segments
 
   resources :locations
+  
+  resources :mail_event
+  
+  resources :price_event
+  
+  resources :cost_event
+  
+  resources :discontinue_event
+  
 
   get "kps/index"
-  get 'kps/index'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
