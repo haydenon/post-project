@@ -1,3 +1,5 @@
+require 'helpers/helper'
+
 class MailRequestsController < ApplicationController
   before_action :set_mail_request, only: [:show, :edit, :update, :destroy]
 
