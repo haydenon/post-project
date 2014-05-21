@@ -1,14 +1,10 @@
-<div id="content">
-	<div id="sidebar">
-		<%= render "layouts/sidebar" %>
-	</div>
-<div id="main">
 <h1>Listing mail_requests</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Route</th>
+      <th>To</th>
+      <th>From</th>
       <th>Price</th>
       <th>Weight</th>
       <th>Volume</th>
@@ -22,7 +18,8 @@
   <tbody>
     <% @mail_requests.each do |mail_request| %>
       <tr>
-        <td><%= mail_request.mail_route_id %></td>
+        <td><%= mail_request.mail_route.to_location.name %></td>
+        <td><%= mail_request.mail_route.from_location.name %></td>
         <td><%= mail_request.price %></td>
         <td><%= mail_request.weight %></td>
         <td><%= mail_request.volume %></td>
@@ -38,4 +35,3 @@
 <br>
 
 <%= link_to 'New Mail request', new_mail_request_path %>
-</div>

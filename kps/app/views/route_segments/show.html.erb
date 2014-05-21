@@ -2,42 +2,42 @@
 
 <p>
   <strong>From:</strong>
-  <%= @route_segment.from_id %>
+  <%= @route_segment.from_location.name %>
 </p>
 
 <p>
   <strong>To:</strong>
-  <%= @route_segment.to_id %>
+  <%= @route_segment.to_location.name %>
 </p>
 
 <p>
-  <strong>Active:</strong>
-  <%= @route_segment.active %>
+  <strong>Status:</strong>
+  <%= @route_segment.active ?  'Active' : 'Inactive' %>
 </p>
 
 <p>
   <strong>Cost:</strong>
-  <%= @route_segment.cost %>
+  <%= Helper.number_as_currency(@route_segment.cost) %>
 </p>
 
 <p>
   <strong>Duration:</strong>
-  <%= @route_segment.duration %>
+  <%= @route_segment.duration %> hours
 </p>
 
 <p>
   <strong>Costvolume:</strong>
-  <%= @route_segment.costVolume %>
+  $<%= @route_segment.costVolume %> per cm³
 </p>
 
 <p>
   <strong>Costweight:</strong>
-  <%= @route_segment.costWeight %>
+  $<%= number_with_precision(@route_segment.costWeight, :precision => 2) %> per gram
 </p>
 
 <p>
   <strong>Company:</strong>
-  <%= @route_segment.company_id %>
+  <%= @route_segment.company.name %>
 </p>
 
 <%= link_to 'Edit', edit_route_segment_path(@route_segment) %> |
