@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521133330) do
+ActiveRecord::Schema.define(version: 20140521134204) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20140521133330) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "route_id"
+    t.float    "costVolume"
+    t.float    "costWeight"
+    t.float    "price"
   end
 
   create_table "locations", force: true do |t|
@@ -62,7 +65,6 @@ ActiveRecord::Schema.define(version: 20140521133330) do
     t.integer  "priority_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "post_completion_at"
   end
 
   create_table "mail_routes", force: true do |t|
@@ -93,9 +95,6 @@ ActiveRecord::Schema.define(version: 20140521133330) do
     t.datetime "updated_at"
     t.integer  "day"
     t.integer  "frequency"
-    t.integer  "priority_id"
   end
-
-  add_index "route_segments", ["priority_id"], name: "index_route_segments_on_priority_id"
 
 end

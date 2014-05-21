@@ -43,11 +43,11 @@ class RouteSegmentsController < ApplicationController
   # PATCH/PUT /route_segments/1.json
   def update
 	if ((@route_segment.costVolume != params[:route_segment][:costVolume]) or (@route_segment.costWeight != params[:route_segment][:costWeight])) then
-        CostEvent.create!(:route_id => @route.id,:costWeight => @route_segment.costWeight, 
+        CostEvent.create!(:route_id => @route_segment.id,:costWeight => @route_segment.costWeight, 
           :costVolume => @route_segment.costVolume)       
 		end
 	if(@route_segment.active != params[:route_segment][:active]) then
-		DiscontinueEvent.create!(:route_id => @route.id)
+		DiscontinueEvent.create!(:route_id => @route_segment.id)
 		end
     respond_to do |format|
       if @route_segment.update(route_segment_params)
