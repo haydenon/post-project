@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521090739) do
+ActiveRecord::Schema.define(version: 20140521130720) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20140521090739) do
     t.datetime "updated_at"
     t.integer  "day"
     t.integer  "frequency"
+    t.integer  "priority_id"
   end
+
+  add_index "route_segments", ["priority_id"], name: "index_route_segments_on_priority_id"
 
 end

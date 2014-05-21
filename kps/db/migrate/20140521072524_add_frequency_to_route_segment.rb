@@ -1,5 +1,5 @@
 class AddFrequencyToRouteSegment < ActiveRecord::Migration
   def change
-    add_column :route_segments, :frequency, :integer
+    add_index :route_segments, :priority_id, :integer
   end
 end
