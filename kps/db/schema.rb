@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515123407) do
+ActiveRecord::Schema.define(version: 20140521042804) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20140515123407) do
     t.integer  "mail_request_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order"
+    t.boolean  "reversed"
   end
 
   create_table "mail_requests", force: true do |t|

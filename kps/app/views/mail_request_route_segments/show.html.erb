@@ -10,5 +10,15 @@
   <%= @mail_request_route_segment.mail_request_id %>
 </p>
 
+<p>
+  <strong>Order:</strong>
+  <%= @mail_request_route_segment.order %>
+</p>
+
+<p>
+  <strong>Reversed:</strong>
+  <%= @mail_request_route_segment.reversed %>
+</p>
+
 <%= link_to 'Edit', edit_mail_request_route_segment_path(@mail_request_route_segment) %> |
 <%= link_to 'Back', mail_request_route_segments_path %>
