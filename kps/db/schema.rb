@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521130720) do
+ActiveRecord::Schema.define(version: 20140521133330) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140521130720) do
     t.integer  "priority_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "post_completion_at"
   end
 
   create_table "mail_routes", force: true do |t|
