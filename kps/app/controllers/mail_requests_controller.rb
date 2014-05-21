@@ -1,4 +1,5 @@
 require 'helpers/helper'
+require 'helpers/route_finder'
 
 class MailRequestsController < ApplicationController
   before_action :set_mail_request, only: [:show, :edit, :update, :destroy]
@@ -42,10 +43,22 @@ class MailRequestsController < ApplicationController
 
     @mail_request.mail_route_id = route.id
 
+    path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
+    @mail_request.post_completion_at = path_details[1]
+
     respond_to do |format|
-      if @mail_request.save
+      if !path_details.nil? && @mail_request.save
+        i=0
+        path_details[0].each do |seg|
+          MailRequestRouteSegment.create(:route_segment_id => seg.id, :mail_request_id => @mail_request.id,
+            :order => i, :reversed => false)
+          i = i+1
+        end
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mail_request }
+      # elsif path_details.nil?
+      #     format.html { render action: 'new' }
+      #     format.json { render json: @mail_request.errors, status: 'No path between locations' }
       else
         format.html { render action: 'new' }
         format.json { render json: @mail_request.errors, status: :unprocessable_entity }
