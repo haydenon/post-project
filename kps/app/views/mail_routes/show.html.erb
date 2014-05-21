@@ -2,12 +2,12 @@
 
 <p>
   <strong>To:</strong>
-  <%= @mail_route.to_id %>
+  <%= @mail_route.to_location.name %>
 </p>
 
 <p>
   <strong>From:</strong>
-  <%= @mail_route.from_id %>
+  <%= @mail_route.from_location.name %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Priority:</strong>
-  <%= @mail_route.priority_id %>
+  <%= @mail_route.priority.name %>
 </p>
 
 <%= link_to 'Edit', edit_mail_route_path(@mail_route) %> |

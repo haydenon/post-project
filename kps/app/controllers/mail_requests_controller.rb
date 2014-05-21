@@ -26,6 +26,20 @@ class MailRequestsController < ApplicationController
   def create
     @mail_request = MailRequest.new(mail_request_params)
 
+    Rails.logger.debug("My object: #{@mail_request.inspect}")
+
+    route = MailRoute.where(:to_id => @mail_request.to_id, :from_id => @mail_request.from_id,
+      :priority_id => @mail_request.priority_id).take
+
+    if route.nil? # if the route doesn't exist, create it
+      route = MailRoute.create(:to_id => @mail_request.to_id, :from_id => @mail_request.from_id,
+        :priority_id => @mail_request.priority_id, :margin => 1.12) #NEED TO CREATE MECHANISM FOR DEFAULT MARGIN
+    end
+
+    @mail_request.price = 14.5 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
+
+    @mail_request.mail_route_id = route.id
+
     respond_to do |format|
       if @mail_request.save
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
@@ -69,6 +83,6 @@ class MailRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mail_request_params
-      params.require(:mail_request).permit(:mail_route_id, :price, :weight, :volume, :priority_id)
+      params.require(:mail_request).permit(:mail_route_id, :price, :weight, :volume, :priority_id, :from_id, :to_id)
     end
 end

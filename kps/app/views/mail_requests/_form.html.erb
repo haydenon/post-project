@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :mail_route_id %><br>
-    <%= f.number_field :mail_route_id %>
+    <%= f.label 'To' %><br>
+    <%= f.collection_select :to_id, Location.all, :id, :name%>
+  </div>
+  <div class="field">
+    <%= f.label 'From' %><br>
+    <%= f.collection_select :from_id, Location.all, :id, :name%>
   </div>
   <div class="field">
     <%= f.label :weight%><br>
@@ -24,8 +28,8 @@
     <%= f.number_field :volume %>
   </div>
   <div class="field">
-    <%= f.label :priority_id %><br>
-    <%= f.number_field :priority_id %>
+    <%= f.label 'Priority' %><br>
+    <%= f.collection_select :priority_id, Priority.all, :id, :name%>
   </div>
   <div class="actions">
     <%= f.submit %>
