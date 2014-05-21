@@ -26,7 +26,12 @@
 
 <p>
   <strong>Priority:</strong>
-  <%= @mail_request.priority_id %>
+  <%= @mail_request.priority.name %>
+</p>
+
+<p>
+  <strong>Delivery Time:</strong>
+  <%= @mail_request.post_completion_at %>
 </p>
 
 <%= link_to 'Edit', edit_mail_request_path(@mail_request) %> |

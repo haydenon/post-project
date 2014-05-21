@@ -9,6 +9,7 @@
       <th>Weight</th>
       <th>Volume</th>
       <th>Priority</th>
+      <th>Delivery Time</th>
       <th></th>
       <th></th>
       <th></th>
@@ -24,6 +25,7 @@
         <td><%= mail_request.weight %>g</td>
         <td><%= mail_request.volume %>cm³</td>
         <td><%= mail_request.priority.name %></td>
+        <td><%= mail_request.post_completion_at %></td>
         <td><%= link_to 'Show', mail_request %></td>
         <td><%= link_to 'Edit', edit_mail_request_path(mail_request) %></td>
         <td><%= link_to 'Destroy', mail_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
