@@ -1,4 +1,4 @@
-<h1>Listing mail_requests</h1>
+<h1>Mail Requests</h1>
 
 <table>
   <thead>
@@ -19,8 +19,8 @@
   <tbody>
     <% @mail_requests.each do |mail_request| %>
       <tr>
-        <td><%= mail_request.mail_route.from_location.name %></td>
-        <td><%= mail_request.mail_route.to_location.name %></td>
+        <td><%= link_to mail_request.mail_route.from_location.name, mail_request.mail_route.from_location %></td>
+        <td><%= link_to mail_request.mail_route.to_location.name, mail_request.mail_route.to_location %></td>
         <td><%= Helper.decimal_as_currency(mail_request.price) %></td>
         <td><%= mail_request.weight %>g</td>
         <td><%= mail_request.volume %>cm³</td>
