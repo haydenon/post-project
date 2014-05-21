@@ -53,7 +53,11 @@ html, body {
 	color:#000000;
 	border-collapse: collapse;
    }
-   div#sidebar th, td, tr {
+
+   th, td, tr {
+    padding: 5px;
+   }
+td.side_table, tr.side_table {
     padding: 0;
    }
 
