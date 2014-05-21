@@ -3,16 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th>From</th>
-      <th>To</th>
+      <th>End One</th>
+      <th>End Two</th>
       <th>Status</th>
       <th>Cost</th>
       <th>Duration</th>
       <th>Costvolume</th>
       <th>Costweight</th>
       <th>Company</th>
-	  <th>Day</th>
-	  <th>Frequency</th>
+	    <th>Day</th>
+	    <th>Frequency</th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,8 +30,8 @@
         <td><%= Helper.decimal_as_currency(route_segment.costVolume) %> per cm³</td>
         <td><%= Helper.decimal_as_currency(number_with_precision(route_segment.costWeight, :precision => 2)) %> per gram</td>
         <td><%= route_segment.company.name %></td>
-		<td><%= route_segment.day %></td>
-		<td><%= route_segment.frequency %></td>
+		<td><%= Date::DAYNAMES[route_segment.day] %></td>
+		<td>Every <%= route_segment.frequency %> hour(s)</td>
         <td><%= link_to 'Show', route_segment %></td>
         <td><%= link_to 'Edit', edit_route_segment_path(route_segment) %></td>
         <td><%= link_to 'Destroy', route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

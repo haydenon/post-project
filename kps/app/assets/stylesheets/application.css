@@ -55,7 +55,7 @@ html, body {
    }
 
    th, td, tr {
-    padding: 5px;
+    padding: 3px;
    }
 td.side_table, tr.side_table {
     padding: 0;
