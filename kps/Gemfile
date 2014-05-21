@@ -32,6 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#pqueue for the priority queue
+gem 'pqueue', '2.0.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

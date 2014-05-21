@@ -2,6 +2,7 @@ class RouteSegment < ActiveRecord::Base
 	belongs_to :to_location, :class_name =>"Location", :foreign_key => 'to_id'
 	belongs_to :from_location, :class_name =>"Location", :foreign_key => 'from_id'
 	belongs_to :company, :class_name =>"Company", :foreign_key => 'company_id'
+	belongs_to :priority, :class_name =>"Priority", :foreign_key => 'priority_id'
 	has_many :mail_request_route_segments, :class_name => "MailRequestRouteSegment"
 	has_many :requests, :class_name => "MailRequest", :through => :mail_request_route_segments
 	
