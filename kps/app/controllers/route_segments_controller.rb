@@ -71,6 +71,6 @@ class RouteSegmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_segment_params
-      params.require(:route_segment).permit(:from_id, :to_id, :active, :cost, :duration, :costVolume, :costWeight, :company_id)
+      params.require(:route_segment).permit(:from_id, :to_id, :active, :cost, :duration, :costVolume, :costWeight, :company_id, :day, :frequency)
     end
 end
