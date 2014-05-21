@@ -41,6 +41,9 @@ class MailRequestsController < ApplicationController
     @mail_request.price = 14.5 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
 
     @mail_request.mail_route_id = route.id
+	
+	 MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
+	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
 
     respond_to do |format|
       if @mail_request.save

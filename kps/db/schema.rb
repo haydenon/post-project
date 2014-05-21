@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521090739) do
+ActiveRecord::Schema.define(version: 20140521134204) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20140521090739) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "route_id"
+    t.float    "costVolume"
+    t.float    "costWeight"
+    t.float    "price"
   end
 
   create_table "locations", force: true do |t|
