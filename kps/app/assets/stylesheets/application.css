@@ -30,7 +30,6 @@ html, body {
 	padding:0; 
 	background-size:100%;
 	background-attachment: fixed;
-	color: white;
    }
    
    h1{
@@ -49,12 +48,16 @@ html, body {
    	margin-top: -10px;
    }
    
-   table{
+   div#sidebar table{
 	color:#000000;
 	border-collapse: collapse;
    }
-   th, td, tr {
+   div#sidebar th, td, tr {
     padding: 0;
+   }
+
+td {
+	text-align: center;
 }
    
 	   

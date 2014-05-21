@@ -27,12 +27,12 @@
 
 <p>
   <strong>Costvolume:</strong>
-  $<%= @route_segment.costVolume %> per cm³
+  <%= Helper.decimal_as_currency(@route_segment.costVolume) %> per cm³
 </p>
 
 <p>
   <strong>Costweight:</strong>
-  $<%= number_with_precision(@route_segment.costWeight, :precision => 2) %> per gram
+  <%= Helper.decimal_as_currency(number_with_precision(@route_segment.costWeight, :precision => 2)) %> per gram
 </p>
 
 <p>
