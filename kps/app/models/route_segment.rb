@@ -12,6 +12,11 @@ class RouteSegment < ActiveRecord::Base
 		errors.add(:day, "Not a valid day integer must be 0 - 6") if day >= 7 or day < 0
 		errors.add(:frequency, "Frequency must be greater than 0") if frequency < 1	
 		errors.add(:duration, "Duration must be greater than 0") if duration < 1	
-		errors.add(:cost, "Cost must be greater than 0") if cost < 1	
+		errors.add(:cost, "must be greater than 0") if cost < 1	
+		errors.add(:costVolume, "must be greater than 0") if costVolume < 1	
+		errors.add(:costWeight, "must be greater than 0") if costWeight < 1	
+		errors.add(:to_id, "does not exist") if (!Location.exists?(to_id))
+		errors.add(:from_id, "does not exist") if (!Location.exists?(from_id))
+		errors.add(:company_id, "does not exist") if (!Company.exists?(company_id))
 	end
 end
