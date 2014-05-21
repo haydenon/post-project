@@ -8,6 +8,8 @@
 	  <th>From</th>
       <th>Mail request</th>
 	  <th>Request Created At</th>
+	  <th>Order</th>
+	  <th>Reversed</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,6 +24,8 @@
 		<td><%= mail_request_route_segment.segment.from_location.name %></td>
 		<td><%= mail_request_route_segment.mail_request_id %></td>
         <td><%= mail_request_route_segment.request.created_at %></td>
+		<td><%= mail_request_route_segment.order %></td>
+		<td><%= mail_request_route_segment.reversed %></td>
         <td><%= link_to 'Show', mail_request_route_segment %></td>
         <td><%= link_to 'Edit', edit_mail_request_route_segment_path(mail_request_route_segment) %></td>
         <td><%= link_to 'Destroy', mail_request_route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

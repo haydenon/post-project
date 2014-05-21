@@ -69,6 +69,6 @@ class MailRequestRouteSegmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mail_request_route_segment_params
-      params.require(:mail_request_route_segment).permit(:route_segment_id, :mail_request_id)
+      params.require(:mail_request_route_segment).permit(:route_segment_id, :mail_request_id, :order, :reversed)
     end
 end
