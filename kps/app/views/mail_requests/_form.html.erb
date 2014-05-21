@@ -1,10 +1,10 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
+<%= form_for(@mail_request) do |f| %>
+  <% if @mail_request.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@mail_request.errors.count, "error") %> prohibited this mail_request from being saved:</h2>
 
       <ul>
-      <% @event.errors.full_messages.each do |msg| %>
+      <% @mail_request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,20 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :mail_route_id %><br>
+    <%= f.number_field :mail_route_id %>
   </div>
   <div class="field">
-    <%= f.label :origin_id %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.text_field :weight %>
+    <%= f.label :weight%><br>
+    <%= f.number_field :weight %>
   </div>
   <div class="field">
     <%= f.label :volume %><br>
-    <%= f.text_field :volume %>
+    <%= f.number_field :volume %>
   </div>
   <div class="field">
     <%= f.label :priority_id %><br>
