@@ -1,3 +1,5 @@
+require 'helpers/helper'
+
 class RouteSegmentsController < ApplicationController
   before_action :set_route_segment, only: [:show, :edit, :update, :destroy]
 
