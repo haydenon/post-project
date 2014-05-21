@@ -20,9 +20,9 @@
       <tr>
         <td><%= mail_request.mail_route.to_location.name %></td>
         <td><%= mail_request.mail_route.from_location.name %></td>
-        <td><%= mail_request.price %></td>
-        <td><%= mail_request.weight %></td>
-        <td><%= mail_request.volume %></td>
+        <td><%= Helper.decimal_as_currency(mail_request.price) %></td>
+        <td><%= mail_request.weight %>g</td>
+        <td><%= mail_request.volume %>cm³</td>
         <td><%= mail_request.priority.name %></td>
         <td><%= link_to 'Show', mail_request %></td>
         <td><%= link_to 'Edit', edit_mail_request_path(mail_request) %></td>
