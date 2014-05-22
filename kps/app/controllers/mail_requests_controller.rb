@@ -43,9 +43,6 @@ class MailRequestsController < ApplicationController
     @mail_request.price = 14.5 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
 
     @mail_request.mail_route_id = route.id
-	
-	 MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
-	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
 
     path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
     @mail_request.found_route = (!path_details.nil? && path_details[0].size!=0)
@@ -69,6 +66,8 @@ class MailRequestsController < ApplicationController
         format.json { render json: @mail_request.errors, status: :unprocessable_entity }
       end
     end
+	 MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
+	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
   end
 
   # PATCH/PUT /mail_requests/1
