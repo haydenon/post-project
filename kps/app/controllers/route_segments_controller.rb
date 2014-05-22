@@ -4,6 +4,7 @@ require 'route_segments_helper'
 
 class RouteSegmentsController < ApplicationController
   before_action :set_route_segment, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /route_segments
   # GET /route_segments.json

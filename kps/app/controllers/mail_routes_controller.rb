@@ -1,5 +1,6 @@
 class MailRoutesController < ApplicationController
   before_action :set_mail_route, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /mail_routes
   # GET /mail_routes.json

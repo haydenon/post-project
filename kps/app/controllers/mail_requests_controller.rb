@@ -3,6 +3,7 @@ require 'helpers/route_finder'
 
 class MailRequestsController < ApplicationController
   before_action :set_mail_request, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /mail_requests
   # GET /mail_requests.json

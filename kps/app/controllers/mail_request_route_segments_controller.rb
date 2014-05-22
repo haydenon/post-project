@@ -1,6 +1,7 @@
 class MailRequestRouteSegmentsController < ApplicationController
   before_action :set_mail_request_route_segment, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
+	
   # GET /mail_request_route_segments
   # GET /mail_request_route_segments.json
   def index
