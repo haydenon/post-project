@@ -19,7 +19,7 @@ class RouteFinder
 		#start algorithm
 		while !pq.empty? do
 
-			if(pq.empty?)#in the event that there's no path
+			if(pq.empty?)#in the event that there's no path return nil
 				return nil
 			elsif(wrap(to)==pq.peek.loc_wrap)
 				#found it, perform wrap up
@@ -39,10 +39,16 @@ class RouteFinder
 				node = pq.remove
 				inner = node.loc_wrap
 				next if [inner].to_set.subset? visited
+
+				#we haven't been to this one before. set the from, and arrive (cost to here) and segment to get here
+				#to those from the node used to get here.
 				inner.from = node.from
 				inner.arrive = node.arrive
 				inner.to_seg = node.to_seg
 				visited.add(inner)
+
+
+				#Add all unvistited neighbours to queue
 				inner.loc.to_routes.each do |seg|
 					seg_wrap = wrap(seg.from_location)
 					next if (!seg.active || ([seg_wrap].to_set.subset? visited))
