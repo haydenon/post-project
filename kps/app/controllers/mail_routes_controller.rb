@@ -49,6 +49,9 @@ class MailRoutesController < ApplicationController
         format.json { render json: @mail_route.errors, status: :unprocessable_entity }
       end
     end
+	if (@mail_route.margin != params[:mail_route][:margin]) then
+        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
+		end
   end
 
   # DELETE /mail_routes/1

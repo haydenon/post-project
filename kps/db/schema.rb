@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521134204) do
+ActiveRecord::Schema.define(version: 20140522011809) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140521134204) do
     t.float    "costVolume"
     t.float    "costWeight"
     t.float    "price"
+    t.integer  "mail_route_id"
+    t.float    "margin"
   end
 
   create_table "locations", force: true do |t|
