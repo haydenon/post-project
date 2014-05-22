@@ -54,9 +54,11 @@ class MailRequestsController < ApplicationController
     respond_to do |format|
       if @mail_request.found_route & @mail_request.save
         i=0
-        path_details[0].each do |seg|
+        path_details[0].each do |seg_rev|
+          seg = seg_rev[0]
+          rev = seg_rev[1]
           MailRequestRouteSegment.create(:route_segment_id => seg.id, :mail_request_id => @mail_request.id,
-            :order => i, :reversed => false)
+            :order => i, :reversed => rev)
           i = i+1
         end
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }

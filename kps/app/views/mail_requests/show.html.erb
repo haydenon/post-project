@@ -2,9 +2,14 @@
 
 <h2>Segments</h2>
 <ol>
-  <% @mail_request.segments.each do |segment| %>
+  <% @mail_request.mail_request_route_segments.each do |mrrs| %>
   <li>
-    <%= segment.from_location.name + ' > ' + segment.to_location.name %>
+    <% if !mrrs.reversed%>
+    <%= mrrs.segment.from_location.name + ' > ' + mrrs.segment.to_location.name %>
+    <% end %>
+    <% if mrrs.reversed%>
+    <%= mrrs.segment.to_location.name + ' > ' + mrrs.segment.from_location.name %>
+    <% end %>
   </li>
   <% end %>
 </ol>

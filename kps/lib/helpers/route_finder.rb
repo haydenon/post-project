@@ -30,7 +30,7 @@ class RouteFinder
 				cur.to_seg = last.to_seg
 				route = []
 				while cur.from!=nil do
-					route << cur.to_seg
+					route << [cur.to_seg,(cur.to_seg.from_location==cur.loc)]
 					cur = cur.from
 				end
 				return [route.reverse,last.arrive]
