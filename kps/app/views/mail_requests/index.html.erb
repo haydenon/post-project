@@ -3,14 +3,14 @@
 <table>
   <thead>
     <tr>
-      <th>From</th>
       <th>To</th>
+      <th>From</th>
       <th>Price</th>
       <th>Weight</th>
       <th>Volume</th>
       <th>Priority</th>
       <th>Delivery Time</th>
-      <th></th>
+      <th>Created At</th>
       <th></th>
       <th></th>
     </tr>
@@ -19,15 +19,15 @@
   <tbody>
     <% @mail_requests.each do |mail_request| %>
       <tr>
-        <td><%= link_to mail_request.mail_route.from_location.name, mail_request.mail_route.from_location %></td>
         <td><%= link_to mail_request.mail_route.to_location.name, mail_request.mail_route.to_location %></td>
+        <td><%= link_to mail_request.mail_route.from_location.name, mail_request.mail_route.from_location %></td>
         <td><%= Helper.decimal_as_currency(mail_request.price) %></td>
         <td><%= mail_request.weight %>g</td>
         <td><%= mail_request.volume %>cm³</td>
         <td><%= mail_request.priority.name %></td>
-        <td><%= mail_request.post_completion_at %></td>
+        <td><%= Helper.time_format(mail_request.post_completion_at) %></td>
+        <td><%= Helper.time_format(mail_request.created_at) %></td>
         <td><%= link_to 'Show', mail_request %></td>
-        <td><%= link_to 'Edit', edit_mail_request_path(mail_request) %></td>
         <td><%= link_to 'Destroy', mail_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

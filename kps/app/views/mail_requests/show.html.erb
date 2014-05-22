@@ -5,10 +5,10 @@
   <% @mail_request.mail_request_route_segments.each do |mrrs| %>
   <li>
     <% if !mrrs.reversed%>
-    <%= mrrs.segment.from_location.name + ' > ' + mrrs.segment.to_location.name %>
+    <%= link_to mrrs.segment.from_location.name + ' > ' + mrrs.segment.to_location.name, mrrs.segment%>
     <% end %>
     <% if mrrs.reversed%>
-    <%= mrrs.segment.to_location.name + ' > ' + mrrs.segment.from_location.name %>
+    <%= link_to mrrs.segment.to_location.name + ' > ' + mrrs.segment.from_location.name, mrrs.segment%>
     <% end %>
   </li>
   <% end %>
@@ -16,17 +16,17 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @mail_request.price %>
+  <%= Helper.decimal_as_currency(@mail_request.price) %>
 </p>
 
 <p>
   <strong>Weight:</strong>
-  <%= @mail_request.weight %>
+  <%= @mail_request.weight %>g
 </p>
 
 <p>
   <strong>Volume:</strong>
-  <%= @mail_request.volume %>
+  <%= @mail_request.volume %>cm³
 </p>
 
 <p>
@@ -36,7 +36,12 @@
 
 <p>
   <strong>Delivery Time:</strong>
-  <%= @mail_request.post_completion_at %>
+  <%= Helper.time_format(@mail_request.post_completion_at) %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= Helper.time_format(@mail_request.created_at) %>
 </p>
 
 <%= link_to 'Edit', edit_mail_request_path(@mail_request) %> |

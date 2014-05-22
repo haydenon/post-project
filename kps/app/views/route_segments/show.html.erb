@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>From:</strong>
+  <strong>End One:</strong>
   <%= @route_segment.from_location.name %>
 </p>
 
 <p>
-  <strong>To:</strong>
+  <strong>End Two:</strong>
   <%= @route_segment.to_location.name %>
 </p>
 
@@ -38,6 +38,16 @@
 <p>
   <strong>Company:</strong>
   <%= @route_segment.company.name %>
+</p>
+
+<p>
+  <strong>Start Day:</strong>
+  <%= Helper.time_day(TimeHelper.first_day(@route_segment, @route_segment.day).to_datetime) %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  Every <%= @route_segment.frequency %> hour(s)
 </p>
 
 <%= link_to 'Edit', edit_route_segment_path(@route_segment) %> |

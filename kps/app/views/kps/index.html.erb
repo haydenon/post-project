@@ -9,7 +9,9 @@
 		Mail Requests:
 	<ul>
 		<% @requests.each do |request| %>
-		<li><%=  link_to request.mail_route.from_location.name + ' > ' + request.mail_route.to_location.name, request %></li>
+		<li>
+			<%=  link_to request.mail_route.from_location.name + ' to ' + request.mail_route.to_location.name, request %>
+		</li>
 		<% end %>
 	</ul>
 	</p>
