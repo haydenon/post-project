@@ -2,6 +2,7 @@ require 'helpers/helper'
 require 'helpers/figures'
 
 class FiguresController < ApplicationController
+	before_filter :authenticate_user!
 
   # GET /figures
   def index
