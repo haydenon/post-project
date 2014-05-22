@@ -45,7 +45,7 @@ class Figures
 	end
 
 	#Returns an array of arrays in this format:
-	#[[][]]
+	#[[to,from,priority,avghours][to,from,priority,avghours]]
 	def self.get_average_time (time)
 		routes = MailRoute.all
 
@@ -61,7 +61,7 @@ class Figures
 			end
 			avg_time = total_time/num if num>0
 			table << [route.to_location,route.from_location,
-				route.priority,avg_time] if num>0 
+				route.priority,avg_time] if num>0
 		end
 		return table
 	end
