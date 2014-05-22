@@ -52,13 +52,32 @@ class MailRequestsController < ApplicationController
     respond_to do |format|
       if @mail_request.found_route & @mail_request.save
         i=0
+        cost = 0
+        price = 0
+
         path_details[0].each do |seg_rev|
+
           seg = seg_rev[0]
           rev = seg_rev[1]
+
+          weight_cost = @mail_request.weight*seg.costWeight
+          volume_cost = @mail_request.volume*seg.costVolume
+          seg_cost = weight_cost > volume_cost ? weight_cost : volume_cost
+          seg_price = seg_cost*@mail_request.mail_route.margin
+          price = price + seg_price
+
           MailRequestRouteSegment.create(:route_segment_id => seg.id, :mail_request_id => @mail_request.id,
-            :order => i, :reversed => rev)
+            :order => i, :reversed => rev, :cost => seg_cost, :price =>seg_price)
           i = i+1
         end
+
+        @mail_request.price = price
+        @mail_request.save
+
+        #Only fire if saved
+        MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
+        :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
+
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mail_request }
       else
@@ -66,8 +85,6 @@ class MailRequestsController < ApplicationController
         format.json { render json: @mail_request.errors, status: :unprocessable_entity }
       end
     end
-	 MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
-	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
   end
 
   # PATCH/PUT /mail_requests/1
