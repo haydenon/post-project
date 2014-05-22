@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+  <%= @route_segment.company.name+" Route" %>
+</h1>
+
 <p>
   <strong>End One:</strong>
-  <%= @route_segment.from_location.name %>
+  <%= link_to @route_segment.from_location.name, @route_segment.from_location %>
 </p>
 
 <p>
   <strong>End Two:</strong>
-  <%= @route_segment.to_location.name %>
+  <%= link_to @route_segment.to_location.name, @route_segment.to_location %>
 </p>
 
 <p>
@@ -33,11 +37,6 @@
 <p>
   <strong>Costweight:</strong>
   <%= Helper.decimal_as_currency(number_with_precision(@route_segment.costWeight, :precision => 2)) %> per gram
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @route_segment.company.name %>
 </p>
 
 <p>

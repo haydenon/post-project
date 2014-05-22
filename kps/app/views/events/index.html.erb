@@ -15,7 +15,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-		<td><%= event.created_at %></td>
+		<td><%= Helper.time_format(event.created_at) %></td>
         <td><%= event.type %></td>
 		<td></td>
         <td><%= link_to 'Show', event %></td>

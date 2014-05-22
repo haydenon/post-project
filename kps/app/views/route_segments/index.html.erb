@@ -8,8 +8,8 @@
       <th>Status</th>
       <th>Cost</th>
       <th>Duration</th>
-      <th>Costvolume</th>
-      <th>Costweight</th>
+      <th>Volume Cost</th>
+      <th>Weight Cost</th>
       <th>Company</th>
 	    <th>Start Day</th>
 	    <th>Frequency</th>
@@ -22,8 +22,8 @@
   <tbody>
     <% @route_segments.each do |route_segment| %>
       <tr>
-        <td><%= route_segment.from_location.name %></td>
-        <td><%= route_segment.to_location.name %></td>
+        <td><%= link_to route_segment.from_location.name, route_segment.from_location %></td>
+        <td><%= link_to route_segment.to_location.name, route_segment.to_location %></td>
         <td><%= route_segment.active ?  'Active' : 'Inactive' %></td>
         <td><%= Helper.decimal_as_currency(route_segment.cost) %></td>
         <td><%= route_segment.duration %> hours</td>
