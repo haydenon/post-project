@@ -1,3 +1,5 @@
+require 'helpers/margin_defaults'
+
 class MailRoutesController < ApplicationController
   before_action :set_mail_route, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
@@ -31,7 +33,8 @@ class MailRoutesController < ApplicationController
       route = MailRoute.where(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id,
         :priority_id => @mail_route.priority_id).take
       if route.nil?
-        route = MailRoute.new(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id, :margin => 1.12, :priority_id => @mail_route.priority_id)
+        route = MailRoute.new(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id,
+          :margin => MarginDefaults.get_margin(@mail_route.priority_id), :priority_id => @mail_route.priority_id)
         route.save
       end
       redirect_to route

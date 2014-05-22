@@ -1,5 +1,6 @@
 require 'helpers/helper'
 require 'helpers/route_finder'
+require 'helpers/margin_defaults'
 
 class MailRequestsController < ApplicationController
   before_action :set_mail_request, only: [:show, :edit, :update, :destroy]
@@ -36,11 +37,11 @@ class MailRequestsController < ApplicationController
       :priority_id => @mail_request.priority_id).take
 
     if route.nil? # if the route doesn't exist, create it
+      marg = MarginDefaults.get_margin(@mail_request.priority_id)
       route = MailRoute.create(:to_id => @mail_request.to_id, :from_id => @mail_request.from_id,
-        :priority_id => @mail_request.priority_id, :margin => 1.12) #NEED TO CREATE MECHANISM FOR DEFAULT MARGIN
+        :priority_id => @mail_request.priority_id, :margin => marg)
     end
 
-    @mail_request.price = 14.5 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
 
     @mail_request.mail_route_id = route.id
 	
@@ -51,17 +52,35 @@ class MailRequestsController < ApplicationController
     @mail_request.found_route = (!path_details.nil? && path_details[0].size!=0)
 
     @mail_request.post_completion_at = path_details[1] if !path_details.nil?
+    @mail_request.price = 0 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
+
 
     respond_to do |format|
       if @mail_request.found_route & @mail_request.save
+
         i=0
+        cost = 0
+        price = 0
+
         path_details[0].each do |seg_rev|
+
           seg = seg_rev[0]
           rev = seg_rev[1]
+
+          weight_cost = @mail_request.weight*seg.costWeight
+          volume_cost = @mail_request.volume*seg.costVolume
+          seg_cost = weight_cost > volume_cost ? weight_cost : volume_cost
+          seg_price = seg_cost*@mail_request.mail_route.margin
+          price = price + seg_price
+
           MailRequestRouteSegment.create(:route_segment_id => seg.id, :mail_request_id => @mail_request.id,
-            :order => i, :reversed => rev)
+            :order => i, :reversed => rev, :cost => seg_cost, :price =>seg_price)
           i = i+1
         end
+
+        @mail_request.price = price
+        @mail_request.save
+
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mail_request }
       else
