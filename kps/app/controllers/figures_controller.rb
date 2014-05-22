@@ -11,5 +11,6 @@ class FiguresController < ApplicationController
     @expenditure = result[1]
     @events = Figures.get_events_to_time time
     @event_amount_table = Figures.get_mail_ammounts time
+    @avg_time_table = Figures.get_average_time time
   end
 end

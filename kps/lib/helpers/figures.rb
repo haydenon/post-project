@@ -16,6 +16,8 @@ class Figures
       	return events.size
 	end
 
+	#Returns an array of arrays in this format:
+	#[[to,from,tnum,tweight,tvolume],[to,from,tnum,tweight,tvolume]]
 	def self.get_mail_ammounts (time)
 		locs = Location.all
     	reqs = MailRequest.where("created_at <= ?", time)
@@ -35,11 +37,33 @@ class Figures
     				weight = weight + req.weight
     				volume = volume + req.volume
     			end
-    			table << [t_loc,f_loc,num,weight,volume]
+    			table << [t_loc,f_loc,num,weight,volume] if (num>0 || weight>0 || volume>0)
     		end
     	end
 
       	return table
+	end
+
+	#Returns an array of arrays in this format:
+	#[[][]]
+	def self.get_average_time (time)
+		routes = MailRoute.all
+
+		table = []
+
+		routes.each do |route|
+			num = 0
+			total_time = 0
+			route.mail_requests.each do |req|
+				next if req.created_at > time
+				num = num + 1
+				total_time = total_time + (req.post_completion_at - req.created_at)
+			end
+			avg_time = total_time/num if num>0
+			table << [route.to_location,route.from_location,
+				route.priority,avg_time] if num>0 
+		end
+		return table
 	end
 
 end
