@@ -21,6 +21,22 @@ class MailRoutesController < ApplicationController
   def edit
   end
 
+  # POST /mail_routes/find
+  def find
+    @mail_route = MailRoute.new(mail_route_params)
+    if @mail_route.to_id==@mail_route.from_id
+      redirect_to action: "index"
+    else
+      route = MailRoute.where(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id,
+        :priority_id => @mail_route.priority_id).take
+      if route.nil?
+        route = MailRoute.new(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id, :margin => 1.12, :priority_id => @mail_route.priority_id)
+        route.save
+      end
+      redirect_to route
+    end
+  end
+
   # POST /mail_routes
   # POST /mail_routes.json
   def create
