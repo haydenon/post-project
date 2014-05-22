@@ -46,7 +46,7 @@ class RouteSegmentsController < ApplicationController
         CostEvent.create!(:route_id => @route_segment.id,:costWeight => @route_segment.costWeight, 
           :costVolume => @route_segment.costVolume)       
 		end
-	if(@route_segment.active != params[:route_segment][:active]) then
+	if(((@route_segment.active) != (params[:route_segment][:active])) && (@route_segment.active)) then
 		DiscontinueEvent.create!(:route_id => @route_segment.id)
 		end
     respond_to do |format|
