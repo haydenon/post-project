@@ -40,7 +40,7 @@ class MailRequestsController < ApplicationController
         :priority_id => @mail_request.priority_id, :margin => 1.12) #NEED TO CREATE MECHANISM FOR DEFAULT MARGIN
     end
 
-    @mail_request.price = 14.5 #TEMPORARY PRICE SETTING. EVENTUALLY WILL BE CALCULATED
+    @mail_request.price = 0
 
     @mail_request.mail_route_id = route.id
 
