@@ -45,10 +45,7 @@ class MailRequestsController < ApplicationController
 
     @mail_request.mail_route_id = route.id
 	
-	 MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
-	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
-
-    path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
+	  path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
     @mail_request.found_route = (!path_details.nil? && path_details[0].size!=0)
 
     @mail_request.post_completion_at = path_details[1] if !path_details.nil?
@@ -80,6 +77,10 @@ class MailRequestsController < ApplicationController
 
         @mail_request.price = price
         @mail_request.save
+
+        #Only fire if saved
+        MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
+        :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
 
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mail_request }

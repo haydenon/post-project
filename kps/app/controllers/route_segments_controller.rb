@@ -47,6 +47,16 @@ class RouteSegmentsController < ApplicationController
   def update
     respond_to do |format|
       if @route_segment.update(route_segment_params)
+
+        #only fire these if changes occur
+        if ((@route_segment.costVolume != params[:route_segment][:costVolume]) or (@route_segment.costWeight != params[:route_segment][:costWeight])) then
+          CostEvent.create!(:route_id => @route_segment.id,:costWeight => @route_segment.costWeight, 
+          :costVolume => @route_segment.costVolume)       
+        end
+        if(((@route_segment.active) != (params[:route_segment][:active])) && !(@route_segment.active)) then
+          DiscontinueEvent.create!(:route_id => @route_segment.id)
+        end
+
         format.html { redirect_to @route_segment, notice: 'Route segment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -54,13 +64,7 @@ class RouteSegmentsController < ApplicationController
         format.json { render json: @route_segment.errors, status: :unprocessable_entity }
       end
     end
-	if ((@route_segment.costVolume != params[:route_segment][:costVolume]) or (@route_segment.costWeight != params[:route_segment][:costWeight])) then
-        CostEvent.create!(:route_id => @route_segment.id,:costWeight => @route_segment.costWeight, 
-          :costVolume => @route_segment.costVolume)       
-		end
-	if(((@route_segment.active) != (params[:route_segment][:active])) && !(@route_segment.active)) then
-		DiscontinueEvent.create!(:route_id => @route_segment.id)
-		end
+	  
   end
 
   # DELETE /route_segments/1

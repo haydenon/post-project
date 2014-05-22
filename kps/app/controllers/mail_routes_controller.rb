@@ -62,6 +62,12 @@ class MailRoutesController < ApplicationController
   def update
     respond_to do |format|
       if @mail_route.update(mail_route_params)
+
+        #Only fire if updated
+        if (@mail_route.margin != params[:mail_route][:margin]) then
+        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
+        end
+
         format.html { redirect_to @mail_route, notice: 'Mail route was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,9 +75,6 @@ class MailRoutesController < ApplicationController
         format.json { render json: @mail_route.errors, status: :unprocessable_entity }
       end
     end
-	if (@mail_route.margin != params[:mail_route][:margin]) then
-        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
-		end
   end
 
   # DELETE /mail_routes/1
