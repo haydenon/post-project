@@ -1,15 +1,12 @@
 require 'helpers/helper'
+require 'helpers/figures'
 
 class FiguresController < ApplicationController
 
   # GET /figures
   def index
-    @mrrs = MailRequestRouteSegment.all
-    @revenue = 0
-    @expenditure = 0
-    @mrrs.each do |mrrs|
-      @revenue = @revenue + mrrs.price
-      @expenditure = @expenditure + mrrs.cost
-    end
+    result = Figures.get_revenue_expenditure DateTime.now
+    @revenue = result[0]
+    @expenditure = result[1]
   end
 end
