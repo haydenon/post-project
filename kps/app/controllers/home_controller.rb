@@ -4,5 +4,9 @@ class HomeController < ApplicationController
 			redirect_to :controller=> 'kps', :action => 'index'
 		end
 	end
+	
+	def show
+	
+	end
 
 end
