@@ -1,4 +1,6 @@
 require 'helpers/helper'
+require 'date'
+require 'route_segments_helper'
 
 class RouteSegmentsController < ApplicationController
   before_action :set_route_segment, only: [:show, :edit, :update, :destroy]
@@ -78,6 +80,6 @@ class RouteSegmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_segment_params
-      params.require(:route_segment).permit(:from_id, :to_id, :active, :cost, :duration, :costVolume, :costWeight, :company_id, :day, :frequency)
+      params.require(:route_segment).permit(:from_id, :to_id, :active, :priority_id, :duration, :costVolume, :costWeight, :company_id, :day, :frequency)
     end
 end

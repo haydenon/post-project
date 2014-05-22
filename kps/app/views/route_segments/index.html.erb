@@ -6,14 +6,13 @@
       <th>End One</th>
       <th>End Two</th>
       <th>Status</th>
-      <th>Cost</th>
+      <th>Priority</th>
       <th>Duration</th>
       <th>Volume Cost</th>
       <th>Weight Cost</th>
       <th>Company</th>
 	    <th>Start Day</th>
 	    <th>Frequency</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -25,7 +24,7 @@
         <td><%= link_to route_segment.from_location.name, route_segment.from_location %></td>
         <td><%= link_to route_segment.to_location.name, route_segment.to_location %></td>
         <td><%= route_segment.active ?  'Active' : 'Inactive' %></td>
-        <td><%= Helper.decimal_as_currency(route_segment.cost) %></td>
+        <td><%= route_segment.priority.name %></td>
         <td><%= route_segment.duration %> hours</td>
         <td><%= Helper.decimal_as_currency(route_segment.costVolume) %> per cm³</td>
         <td><%= Helper.decimal_as_currency(number_with_precision(route_segment.costWeight, :precision => 2)) %> per gram</td>
@@ -33,7 +32,6 @@
 		<td><%= Helper.time_day(TimeHelper.first_day(route_segment, route_segment.day).to_datetime) %></td>
 		<td>Every <%= route_segment.frequency %> hour(s)</td>
         <td><%= link_to 'Show', route_segment %></td>
-        <td><%= link_to 'Edit', edit_route_segment_path(route_segment) %></td>
         <td><%= link_to 'Destroy', route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

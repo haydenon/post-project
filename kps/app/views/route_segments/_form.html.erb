@@ -24,10 +24,6 @@
     <%= f.check_box :active %>
   </div>
   <div class="field">
-    <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
-  </div>
-  <div class="field">
     <%= f.label :duration %><br>
     <%= f.number_field :duration %>
   </div>
@@ -40,12 +36,16 @@
     <%= f.text_field :costWeight %>
   </div>
   <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.number_field :company_id %>
+    <%= f.label 'Company' %><br>
+    <%= f.collection_select :company_id, Company.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :day %><br>
-    <%= f.text_field :day %>
+    <%= f.label 'Priority' %><br>
+    <%= f.collection_select :priority_id, Priority.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Start Day' %><br>
+    <%= f.collection_select :day, RouteSegmentsHelper.get_days, :day,:name %>
   </div>
   <div class="field">
     <%= f.label :frequency %><br>
