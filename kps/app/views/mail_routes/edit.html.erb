@@ -1,5 +1,13 @@
 <h1>Editing Route Margin</h1>
+<p>
+  <strong>To:</strong>
+  <%= @mail_route.to_location.name %>
+</p>
 
+<p>
+  <strong>From:</strong>
+  <%= @mail_route.from_location.name %>
+</p>
 <%= render 'form' %>
 
 <%= link_to 'Show', @mail_route %> |

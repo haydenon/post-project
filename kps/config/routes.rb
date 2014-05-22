@@ -3,6 +3,8 @@ Kps::Application.routes.draw do
   resources :events
 
   get "events/new"
+
+  get '/figures' => 'figures#index'
   
   resources :companies
 

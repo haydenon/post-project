@@ -1,3 +1,5 @@
+require 'helpers/margin_defaults'
+
 class MailRoutesController < ApplicationController
   before_action :set_mail_route, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
@@ -31,7 +33,8 @@ class MailRoutesController < ApplicationController
       route = MailRoute.where(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id,
         :priority_id => @mail_route.priority_id).take
       if route.nil?
-        route = MailRoute.new(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id, :margin => 1.12, :priority_id => @mail_route.priority_id)
+        route = MailRoute.new(:to_id => @mail_route.to_id, :from_id => @mail_route.from_id,
+          :margin => MarginDefaults.get_margin(@mail_route.priority_id), :priority_id => @mail_route.priority_id)
         route.save
       end
       redirect_to route
@@ -59,6 +62,12 @@ class MailRoutesController < ApplicationController
   def update
     respond_to do |format|
       if @mail_route.update(mail_route_params)
+
+        #Only fire if updated
+        if (@mail_route.margin != params[:mail_route][:margin]) then
+        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
+        end
+
         format.html { redirect_to @mail_route, notice: 'Mail route was successfully updated.' }
         format.json { head :no_content }
       else
@@ -66,9 +75,6 @@ class MailRoutesController < ApplicationController
         format.json { render json: @mail_route.errors, status: :unprocessable_entity }
       end
     end
-	if (@mail_route.margin != params[:mail_route][:margin]) then
-        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
-		end
   end
 
   # DELETE /mail_routes/1
