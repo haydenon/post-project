@@ -45,7 +45,7 @@ class RouteFinder
 				visited.add(inner)
 				inner.loc.to_routes.each do |seg|
 					seg_wrap = wrap(seg.from_location)
-					next if (!seg.active || (seg[seg_wrap].to_set.subset? visited))
+					next if (!seg.active || ([seg_wrap].to_set.subset? visited))
 					seg_priority = [seg.priority_id].to_set.subset? @air_set
 					seg_priority = air ? seg_priority : !seg_priority
 					pq.add(QueueHolder.new(seg_wrap, seg_priority,
@@ -53,7 +53,7 @@ class RouteFinder
 				end
 				inner.loc.from_routes.each do |seg|
 					seg_wrap = wrap(seg.to_location)
-					next if (!seg.active || (seg[seg_wrap].to_set.subset? visited))
+					next if (!seg.active || ([seg_wrap].to_set.subset? visited))
 					seg_priority = [seg.priority_id].to_set.subset? @air_set
 					seg_priority = air ? seg_priority : !seg_priority
 					pq.add(QueueHolder.new(seg_wrap, seg_priority,

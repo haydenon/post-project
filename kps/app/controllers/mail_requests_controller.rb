@@ -47,10 +47,12 @@ class MailRequestsController < ApplicationController
 	 :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
 
     path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
-    @mail_request.post_completion_at = path_details[1]
+    @mail_request.found_route = (!path_details.nil? && path_details[0].size!=0)
+
+    @mail_request.post_completion_at = path_details[1] if !path_details.nil?
 
     respond_to do |format|
-      if !path_details.nil? && @mail_request.save
+      if @mail_request.found_route & @mail_request.save
         i=0
         path_details[0].each do |seg|
           MailRequestRouteSegment.create(:route_segment_id => seg.id, :mail_request_id => @mail_request.id,
@@ -59,9 +61,6 @@ class MailRequestsController < ApplicationController
         end
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mail_request }
-      # elsif path_details.nil?
-      #     format.html { render action: 'new' }
-      #     format.json { render json: @mail_request.errors, status: 'No path between locations' }
       else
         format.html { render action: 'new' }
         format.json { render json: @mail_request.errors, status: :unprocessable_entity }
