@@ -66,4 +66,24 @@ class Figures
 		return table
 	end
 
+	#Returns an array of arrays in this format:
+	#[[to,from,priority,company,rev-exp][to,from,priority,company,rev-exp]]
+	def self.get_critical_routes (time)
+		segments = RouteSegment.all
+
+		table = []
+
+		segments.each do |seg|
+			exp = 0
+			rev = 0
+			mailrrs = MailRequestRouteSegment.where("created_at <= ? AND route_segment_id = ?", time, seg.id)
+			mailrrs.each do |mrrs|
+				exp = exp + mrrs.cost
+				rev = rev + mrrs.price
+			end
+			table << [seg.to_location, seg.from_location, seg.priority, seg.company, rev-exp] if exp > rev
+		end
+		return table
+	end
+
 end

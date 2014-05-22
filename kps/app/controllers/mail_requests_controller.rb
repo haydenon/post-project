@@ -45,7 +45,7 @@ class MailRequestsController < ApplicationController
     path_details = RouteFinder.find_route(Location.find(@mail_request.to_id),Location.find(@mail_request.from_id), DateTime.now , @mail_request.priority_id==1, RouteSegment.all)
     @mail_request.found_route = (!path_details.nil? && path_details[0].size!=0)
 
-    @mail_request.post_completion_at = path_details[1] if found_route
+    @mail_request.post_completion_at = path_details[1] if @mail_request.found_route
     
     @mail_request.price = 0
 

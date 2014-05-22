@@ -64,3 +64,30 @@
     <% end %>
   </tbody>
 </table>
+
+<br/>
+
+<strong>Critical Routes:</strong>
+<table>
+  <thead>
+    <tr>
+    <th>To</th>
+    <th>From</th>
+    <th>Priority</th>
+    <th>Company</th>
+    <th>Profit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @critical_route_table.each do |row| %>
+      <tr>
+        <td><%= link_to row[0].name, row[0] %></td>
+        <td><%= link_to row[1].name, row[1] %></td>
+        <td><%= row[2].name %></td>
+        <td><%= link_to row[3].name, row[3] %></td>
+        <td><%= Helper.decimal_as_currency(row[4]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

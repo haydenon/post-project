@@ -10,7 +10,7 @@ class MailRoute < ActiveRecord::Base
 		errors.add(:to_id, "does not exist") if (!Location.exists?(to_id))
 		errors.add(:from_id, "does not exist") if (!Location.exists?(from_id))
 		errors.add(:priority_id, "does not exist") if (!Priority.exists?(priority_id))
-		errors.add(:margin, "must be greater than 0") if margin < 1	
+		errors.add(:margin, "must be greater than 0") if margin <= 0	
 	end
 
 end
