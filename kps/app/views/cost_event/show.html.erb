@@ -5,17 +5,27 @@
 
 <p>
   <strong>Origin:</strong>
-  <%= @cost_event.origin_id %>
+  <%= Location.find(@cost_event.origin_id).name  %>
 </p>
 
 <p>
   <strong>Destination:</strong>
-  <%= @cost_event.destination_id %>
+  <%= Location.find(@cost_event.destination_id).name  %>
 </p>
 
 <p>
   <strong>Priority:</strong>
-  <%= @cost_event.priority_id %>
+  <%= Priority.find(@cost_event.priority_id).name %>
+</p>
+
+<p>
+  <strong>Cost(Volume):</strong>
+  $<%= @cost_event.costVolume %>/cm³
+</p>
+
+<p>
+  <strong>Cost (Weight)</strong>
+  $<%= @cost_event.costWeight %>/g
 </p>
 
 <p>
@@ -30,7 +40,7 @@
 
 <p>
   <strong>Transport company:</strong>
-  <%= @cost_event.transport_company_id %>
+  <%= Company.find(@cost_event.transport_company_id).name %>
 </p>
 
 <p>
@@ -45,12 +55,12 @@
 
 <p>
   <strong>Depart frequency:</strong>
-  <%= @cost_event.depart_frequency %>
+  Every <%= @cost_event.depart_frequency %> hour(s)
 </p>
 
 <p>
   <strong>Duration:</strong>
-  <%= @cost_event.duration %>
+  <%= @cost_event.duration %> hour(s)
 </p>
-
+<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

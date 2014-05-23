@@ -5,27 +5,27 @@
 
 <p>
   <strong>Origin:</strong>
-  <%= @mail_event.origin_id %>
+  <%= Location.find(@mail_event.origin_id).name %>
 </p>
 
 <p>
   <strong>Destination:</strong>
-  <%= @mail_event.destination_id %>
+  <%= Location.find(@mail_event.destination_id).name %>
 </p>
 
 <p>
   <strong>Weight:</strong>
-  <%= @mail_event.weight %>
+  <%= @mail_event.weight %>g
 </p>
 
 <p>
   <strong>Volume:</strong>
-  <%= @mail_event.volume %>
+  <%= @mail_event.volume %>cm³
 </p>
 
 <p>
   <strong>Priority:</strong>
-  <%= @mail_event.priority_id %>
+  <%= Priority.find(@mail_event.priority_id).name %>
 </p>
 
 <p>
@@ -37,5 +37,5 @@
   <strong>Time of Entry:</strong>
   <%= @mail_event.created_at %>
 </p>
-
+<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

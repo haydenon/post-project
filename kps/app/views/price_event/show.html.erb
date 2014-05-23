@@ -5,17 +5,17 @@
 
 <p>
   <strong>Origin:</strong>
-  <%= @price_event.origin_id %>
+  <%= Location.find(@price_event.origin_id).name %>
 </p>
 
 <p>
   <strong>Destination:</strong>
-  <%= @price_event.destination_id %>
+  <%= Location.find(@price_event.destination_id).name %>
 </p>
 
 <p>
   <strong>Priority:</strong>
-  <%= @price_event.priority_id %>
+  <%= Priority.find(@price_event.priority_id).name %>
 </p>
 
 <p>
@@ -25,12 +25,12 @@
 
 <p>
   <strong>Transport company:</strong>
-  <%= @price_event.transport_company_id %>
+  <%= @price_event.transport_company_id %> <!--need a way to access transport company from mail route-->
 </p>
 
 <p>
   <strong>Transport type:</strong>
   <%= @price_event.transport_type_id %>
 </p>
-
+<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

@@ -4,28 +4,25 @@
 </p>
 
 <p>
-  <strong>Route:</strong>
-  <%= @discontinue_event.route_id %>
-</p>
-
-<p>
   <strong>Origin:</strong>
-  <%= @discontinue_event.origin_id %>
+  <%= Location.find(@discontinue_event.origin_id).name %>
 </p>
 
 <p>
   <strong>Destination:</strong>
-  <%= @discontinue_event.destination_id %>
+  <%= Location.find(@discontinue_event.destination_id).name %>
 </p>
 
 <p>
   <strong>Transport company:</strong>
-  <%= @discontinue_event.transport_company_id %>
+  <%= Company.find(@discontinue_event.transport_company_id).name %>
 </p>
 
 <p>
   <strong>Transport type:</strong>
   <%= @discontinue_event.transport_type_id %>
 </p>
-
+<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@event.id.to_s %></p>
 <%= link_to 'Back', events_path %>
+
+
