@@ -1,14 +1,16 @@
 <h1>Events</h1>
 
 <table>
+  <tr><p>
+    <strong>Events Processed:</strong>
+    <%= @events_num %>
+  </p></tr>
+	
   <thead>
     <tr>
 	  <th>Date Created</th>
       <th>Type</th>
-	  <th>Description (TODO)</th> 
-      <th></th>
-      <th></th>
-      <th></th>
+	  <th>Description (TODO)</th>
     </tr>
   </thead>
 
@@ -18,9 +20,6 @@
 		<td><%= Helper.time_format(event.created_at) %></td>
         <td><%= event.type %></td>
 		<td></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'Back to Figures', figures_path %>

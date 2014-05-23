@@ -1,4 +1,5 @@
 require 'helpers/helper'
+require 'helpers/events'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -8,6 +9,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+	@events_num = Events.get_events_num DateTime.now
   end
 
   # GET /events/1
