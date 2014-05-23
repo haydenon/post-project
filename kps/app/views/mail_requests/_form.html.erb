@@ -20,11 +20,11 @@
     <%= f.collection_select :from_id, Location.all, :id, :name%>
   </div>
   <div class="field">
-    <%= f.label :weight%><br>
+    <%= f.label "Weight(g)"%><br>
     <%= f.number_field :weight %>
   </div>
   <div class="field">
-    <%= f.label :volume %><br>
+    <%= f.label "Volume(cm³)" %><br>
     <%= f.number_field :volume %>
   </div>
   <div class="field">

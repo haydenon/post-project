@@ -1,5 +1,8 @@
 require 'helpers/helper'
 require 'helpers/margin_defaults'
+require 'date'
+require 'helpers/figures'
+require 'helpers/events'
 
 class MailRoutesController < ApplicationController
   before_action :set_mail_route, only: [:show, :edit, :update, :destroy]

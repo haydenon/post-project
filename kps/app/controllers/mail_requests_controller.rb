@@ -1,5 +1,9 @@
 require 'helpers/helper'
 require 'helpers/route_finder'
+require 'helpers/margin_defaults'
+require 'date'
+require 'helpers/figures'
+require 'helpers/events'
 
 class MailRequestsController < ApplicationController
   before_action :set_mail_request, only: [:show, :edit, :update, :destroy]
@@ -37,7 +41,7 @@ class MailRequestsController < ApplicationController
 
     if route.nil? # if the route doesn't exist, create it
       route = MailRoute.create(:to_id => @mail_request.to_id, :from_id => @mail_request.from_id,
-        :priority_id => @mail_request.priority_id, :margin => 1.12) #NEED TO CREATE MECHANISM FOR DEFAULT MARGIN
+        :priority_id => @mail_request.priority_id, :margin => MarginDefaults.get_margin(@mail_request.priority_id))
     end
 
     @mail_request.mail_route_id = route.id
