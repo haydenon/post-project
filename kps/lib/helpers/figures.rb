@@ -11,11 +11,6 @@ class Figures
       	return [revenue, expenditure]
 	end
 
-	def self.get_events_to_time (time)
-    	events = Event.where("created_at <= ?", time)
-      	return events.size
-	end
-
 	#Returns an array of arrays in this format:
 	#[[to,from,tnum,tweight,tvolume],[to,from,tnum,tweight,tvolume]]
 	def self.get_mail_ammounts (time)

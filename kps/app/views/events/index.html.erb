@@ -1,12 +1,21 @@
 <h1>Events</h1>
 
 <table>
+  <tr><p>
+    <strong>Events Processed:</strong>
+    <%= @events_num %>
+  </p></tr>
+	
   <thead>
     <tr>
 	  <th>Date Created</th>
       <th>Type</th>
+<<<<<<< HEAD
 	  <th>Description (TODO)</th> 
       <th></th>
+=======
+	  <th>Description (TODO)</th>
+>>>>>>> 4f1c01b4e483ac5965eda961eccc11e74a2219b1
     </tr>
   </thead>
 
@@ -16,7 +25,10 @@
 		<td><%= Helper.time_format(event.created_at) %></td>
         <td><%= event.type %></td>
 		<td></td>
+<<<<<<< HEAD
         <td><%= link_to 'Details', event %></td>
+=======
+>>>>>>> 4f1c01b4e483ac5965eda961eccc11e74a2219b1
       </tr>
     <% end %>
   </tbody>
@@ -24,3 +36,7 @@
 
 <br>
 
+<<<<<<< HEAD
+=======
+<%= link_to 'Back to Figures', figures_path %>
+>>>>>>> 4f1c01b4e483ac5965eda961eccc11e74a2219b1
