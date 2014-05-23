@@ -13,5 +13,7 @@ class MailRequest < ActiveRecord::Base
 		errors.add(:to_id, "- Location Can't be the same as the From location") if to_id == from_id
 		errors.add(:priority_id, "- Does not exist") if (!Priority.exists?(priority_id))
 		errors.add(:to_id, "- No route between locations") if !found_route
+		errors.add(:weight, "- Weight must be greater than zero") if weight<=0
+		errors.add(:volume, "- Volume must be greater than zero") if volume<=0
 	end
 end
