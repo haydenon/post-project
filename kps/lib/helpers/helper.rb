@@ -17,8 +17,8 @@ class Helper
 	end
 
 	def self.costs_same (one,two)
-		one = ((one * 100)-one%1).to_int
-		two = ((two * 100)-two%1).to_int
+		one = ((one * 10000)-one%1).to_int
+		two = ((two * 10000)-two%1).to_int
 		return one==two
 	end
 

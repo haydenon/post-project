@@ -1,3 +1,4 @@
+require 'helpers/helper'
 require 'helpers/margin_defaults'
 
 class MailRoutesController < ApplicationController
