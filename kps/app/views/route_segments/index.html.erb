@@ -14,7 +14,6 @@
 	    <th>Start Day</th>
 	    <th>Frequency</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -32,7 +31,6 @@
 		<td><%= Helper.time_day(TimeHelper.first_day(route_segment, route_segment.day).to_datetime) %></td>
 		<td>Every <%= route_segment.frequency %> hour(s)</td>
         <td><%= link_to 'Show', route_segment %></td>
-        <td><%= link_to 'Destroy', route_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
