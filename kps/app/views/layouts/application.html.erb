@@ -11,14 +11,13 @@
 	<div id="sidebar">
 		<%= render "layouts/sidebar" %>
 	</div>
-	
 	<div id="main">
 	<% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, :id => "flash_#{name}" %>
 	<% end %>	
-	
 	<%= yield %>
-	
+	</div>
+	<div id="loggin">
 	<span style='position:absolute; bottom:0px; right:0px;'>
 		<!--<div id="user_nav">-->
 			<% if user_signed_in? %> 
