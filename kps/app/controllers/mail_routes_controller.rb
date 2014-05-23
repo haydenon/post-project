@@ -65,7 +65,7 @@ class MailRoutesController < ApplicationController
 
         #Only fire if updated
         if (@mail_route.margin != params[:mail_route][:margin]) then
-        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin)       
+        PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin, :origin_id => @mail_route.to_id, :destination_id => @mail_route.from_id, :priority_id => @mail_route.priority_id)       
         end
 
         format.html { redirect_to @mail_route, notice: 'Mail route was successfully updated.' }

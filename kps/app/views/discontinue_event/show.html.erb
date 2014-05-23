@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Route:</strong>
+  <%= @discontinue_event.route_id %>
+</p>
+
+<p>
   <strong>Origin:</strong>
   <%= @discontinue_event.origin_id %>
 </p>
@@ -16,31 +21,6 @@
 </p>
 
 <p>
-  <strong>Weight:</strong>
-  <%= @discontinue_event.weight %>
-</p>
-
-<p>
-  <strong>Volume:</strong>
-  <%= @discontinue_event.volume %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= @discontinue_event.priority_id %>
-</p>
-
-<p>
-  <strong>Price per gram:</strong>
-  <%= @discontinue_event.price_per_gram %>
-</p>
-
-<p>
-  <strong>Price per cubic cm:</strong>
-  <%= @discontinue_event.price_per_cubic_cm %>
-</p>
-
-<p>
   <strong>Transport company:</strong>
   <%= @discontinue_event.transport_company_id %>
 </p>
@@ -48,21 +28,6 @@
 <p>
   <strong>Transport type:</strong>
   <%= @discontinue_event.transport_type_id %>
-</p>
-
-<p>
-  <strong>Depart day:</strong>
-  <%= @discontinue_event.depart_day %>
-</p>
-
-<p>
-  <strong>Depart frequency:</strong>
-  <%= @discontinue_event.depart_frequency %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @discontinue_event.duration %>
 </p>
 
 <%= link_to 'Back', events_path %>

@@ -54,7 +54,7 @@ class RouteSegmentsController < ApplicationController
 
         
         if ((@route_segment.costVolume != params[:route_segment][:costVolume]) or (@route_segment.costWeight != params[:route_segment][:costWeight])) then
-              CostEvent.create!(:origin_id => @route_segment.from_id, :destination_id => @route_segment.to_id, :route_id => @route_segment.id,:costWeight => @route_segment.costWeight, :costVolume => @route_segment.costVolume, :transport_company_id => @route_segment.company.id, :depart_day => @route_segment.day, :depart_frequency => @route_segment.frequency, :duration => @route_segment.duration)       
+              CostEvent.create!(:origin_id => @route_segment.from_id, :destination_id => @route_segment.to_id, :route_id => @route_segment.id,:costWeight => @route_segment.costWeight, :costVolume => @route_segment.costVolume, :transport_company_id => @route_segment.company.id, :depart_day => @route_segment.day, :depart_frequency => @route_segment.frequency, :duration => @route_segment.duration, priority_id: => @route_segment.priority_id)       
         end
 
         format.html { redirect_to @route_segment, notice: 'Route segment was successfully updated.' }

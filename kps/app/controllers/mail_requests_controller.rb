@@ -75,7 +75,7 @@ class MailRequestsController < ApplicationController
         @mail_request.save
 
         #Only fire if saved
-        MailEvent.create!(:price => @mail_request.price, :weight => @mail_request.weight,
+        MailEvent.create!(:origin_id => @mail_request.mail_route.to_id, :destination_id => @mail_request.mail_route.from_id, :price => @mail_request.price, :weight => @mail_request.weight,
         :volume => @mail_request.volume, :priority_id => @mail_request.priority_id)
 
         format.html { redirect_to @mail_request, notice: 'Mail request was successfully created.' }
