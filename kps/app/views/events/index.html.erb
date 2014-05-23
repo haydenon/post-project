@@ -10,7 +10,6 @@
     <tr>
 	  <th>Date Created</th>
       <th>Type</th>
-	  <th>Description (TODO)</th> 
 	  <th></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
       <tr>
 		<td><%= Helper.time_format(event.created_at) %></td>
         <td><%= event.type %></td>
-		<td>description</td>
         <td><%= link_to 'Details', event %></td>
       </tr>
     <% end %>
