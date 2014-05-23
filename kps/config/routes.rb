@@ -11,6 +11,8 @@ Kps::Application.routes.draw do
   get '/figures' => 'figures#index'
 
   get 'figures/event_figures/:id' => 'figures#event_figures'
+
+  get '/help' => 'kps#help'
   
   resources :companies
 

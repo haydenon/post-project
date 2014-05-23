@@ -4,4 +4,8 @@ class KpsController < ApplicationController
   def index
   	@requests = MailRequest.all
   end
+
+  def help
+  end
+
 end
