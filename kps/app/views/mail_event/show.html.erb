@@ -37,5 +37,5 @@
   <strong>Time of Entry:</strong>
   <%= @mail_event.created_at %>
 </p>
-<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@mail_event.id.to_s %></p>
+<p><%= link_to "Show Figures For This Event", '/figures/event_figures/'+@mail_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

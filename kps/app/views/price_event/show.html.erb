@@ -32,5 +32,5 @@
   <strong>Transport type:</strong>
   <%= @price_event.transport_type_id %>
 </p>
-<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@price_event.id.to_s %></p>
+<p><%= link_to "Show Figures For This Event", '/figures/event_figures/'+@price_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>
