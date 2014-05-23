@@ -12,20 +12,24 @@
 		<%= render "layouts/sidebar" %>
 	</div>
 	<div id="main">
-	<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>	
-	<%= yield %>
+		<%= yield %>
 	</div>
-	<div id="loggin" style='position:fixed; bottom:0px; right:0px;'>
-		<!--<div id="user_nav">-->
-			<% if user_signed_in? %> 
-				Signed in as: <%= current_user.email %>.  
-				<%= link_to "Not you?", destroy_user_session_path, :method => :delete %> 
-			<% else %> 
-				<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> 
-			<% end %>
-		<!--</div>-->
+	<div id="loggin">
+		<span style='position:fixed; right:0px;'>
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>	
+		<span>
+		<span style='position:fixed; bottom:0px; right:0px;'>
+			<!--<div id="user_nav">-->
+				<% if user_signed_in? %> 
+					Signed in as: <%= current_user.email %>.  
+					<%= link_to "Not you?", destroy_user_session_path, :method => :delete %> 
+				<% else %> 
+					<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> 
+				<% end %>
+			<!--</div>-->
+		</span>
 	</div>
 </div>
 </body>
