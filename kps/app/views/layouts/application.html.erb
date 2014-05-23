@@ -17,8 +17,7 @@
 	<% end %>	
 	<%= yield %>
 	</div>
-	<div id="loggin">
-	<span style='position:absolute; bottom:0px; right:0px;'>
+	<div id="loggin" style='position:absolute; right:0px;'>
 		<!--<div id="user_nav">-->
 			<% if user_signed_in? %> 
 				Signed in as: <%= current_user.email %>.  
@@ -27,7 +26,6 @@
 				<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> 
 			<% end %>
 		<!--</div>-->
-	</span>
 	</div>
 </div>
 </body>
