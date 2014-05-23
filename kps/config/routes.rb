@@ -9,6 +9,8 @@ Kps::Application.routes.draw do
   get "events/new"
 
   get '/figures' => 'figures#index'
+
+  get 'figures/event_figures/:id' => 'figures#event_figures'
   
   resources :companies
 

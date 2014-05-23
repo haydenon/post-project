@@ -1,0 +1,102 @@
+<h1>Figures For <%= @event.type%> ID:<%= @event.id %></h1>
+<p>At time event occured <%= Helper.time_format(@event.created_at)%></p>
+
+<p><%= link_to "Back", :back %></p>
+
+<h1>Figures</h1>
+
+<p>
+  <strong>Revenue:</strong>
+  <%= Helper.decimal_as_currency(@revenue) %>
+</p>
+
+<p>
+  <strong>Expenditure:</strong>
+  <%= Helper.decimal_as_currency(@expenditure) %>
+</p>
+
+<p>
+  <strong>Events Processed:</strong>
+  <%= @events_num %>
+  <br>
+  <%= link_to 'See Events', events_path %>
+</p>
+
+<strong>Amount of Mail:</strong>
+<table>
+  <thead>
+    <tr>
+      <th>To</th>
+	  <th>From</th>
+	  <th>Total Requests</th>
+	  <th>Total Weight</th>
+	  <th>Total Volume</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_amount_table.each do |row| %>
+      <tr>
+        <td><%= link_to row[0].name, row[0] %></td>
+        <td><%= link_to row[1].name, row[1] %></td>
+		<td><%= row[2] %> Request(s)</td>
+		<td><%= row[3] %>g</td>
+		<td><%= row[4] %>cm³</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<strong>Average Delivery Time:</strong>
+<table>
+  <thead>
+    <tr>
+      <th>To</th>
+	  <th>From</th>
+	  <th>Priority</th>
+	  <th>Average Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @avg_time_table.each do |row| %>
+      <tr>
+        <td><%= link_to row[0].name, row[0] %></td>
+        <td><%= link_to row[1].name, row[1] %></td>
+		<td><%= row[2].name %></td>
+		<td><%= number_with_precision(row[3]/3600, :precision => 2) %> hours(s)</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<strong>Critical Routes:</strong>
+<table>
+  <thead>
+    <tr>
+    <th>To</th>
+    <th>From</th>
+    <th>Priority</th>
+    <th>Company</th>
+    <th>Profit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @critical_route_table.each do |row| %>
+      <tr>
+        <td><%= link_to row[0].name, row[0] %></td>
+        <td><%= link_to row[1].name, row[1] %></td>
+        <td><%= row[2].name %></td>
+        <td><%= link_to row[3].name, row[3] %></td>
+        <td><%= Helper.decimal_as_currency(row[4]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Back", :back %></p>
