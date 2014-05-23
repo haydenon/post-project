@@ -1,4 +1,21 @@
 <p>
+<% prev = Event.find_by_id(@cost_event.id-1) %>
+<% if !prev.nil? %>
+<%= link_to "<< Previous", prev %>
+<% end %>
+<% if prev.nil? %>
+<< Previous
+<% end %>
+<% nexte = Event.find_by_id(@cost_event.id+1) %>
+<% if !nexte.nil? %>
+<%= link_to "Next >>", nexte %>
+<% end %>
+<% if nexte.nil? %>
+Next >>
+<% end %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @cost_event.type %>
 </p>
@@ -19,6 +36,11 @@
 </p>
 
 <p>
+  <strong>Transport company:</strong>
+  <%= Company.find(@cost_event.transport_company_id).name %>
+</p>
+
+<p>
   <strong>Cost(Volume):</strong>
   $<%= @cost_event.costVolume %>/cm³
 </p>
@@ -29,28 +51,8 @@
 </p>
 
 <p>
-  <strong>Price per gram:</strong>
-  <%= @cost_event.price_per_gram %>
-</p>
-
-<p>
-  <strong>Price per cubic cm:</strong>
-  <%= @cost_event.price_per_cubic_cm %>
-</p>
-
-<p>
-  <strong>Transport company:</strong>
-  <%= Company.find(@cost_event.transport_company_id).name %>
-</p>
-
-<p>
-  <strong>Transport type:</strong>
-  <%= @cost_event.transport_type_id %>
-</p>
-
-<p>
   <strong>Depart day:</strong>
-  <%= @cost_event.depart_day %>
+  <%= Date::DAYNAMES[@cost_event.depart_day.to_i] %>
 </p>
 
 <p>
@@ -62,5 +64,6 @@
   <strong>Duration:</strong>
   <%= @cost_event.duration %> hour(s)
 </p>
+
 <p><%= link_to "Show Figures For This Event", '/figures/event_figures/'+@cost_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

@@ -1,4 +1,21 @@
 <p>
+<% prev = Event.find_by_id(@discontinue_event.id-1) %>
+<% if !prev.nil? %>
+<%= link_to "<< Previous", prev %>
+<% end %>
+<% if prev.nil? %>
+<< Previous
+<% end %>
+<% nexte = Event.find_by_id(@discontinue_event.id+1) %>
+<% if !nexte.nil? %>
+<%= link_to "Next >>", nexte %>
+<% end %>
+<% if nexte.nil? %>
+Next >>
+<% end %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @discontinue_event.type %>
 </p>
@@ -14,14 +31,16 @@
 </p>
 
 <p>
+  <strong>Priority:</strong>
+  <%= RouteSegment.find(@discontinue_event.route_id).priority.name %>
+</p>
+
+<p>
   <strong>Transport company:</strong>
   <%= Company.find(@discontinue_event.transport_company_id).name %>
 </p>
 
-<p>
-  <strong>Transport type:</strong>
-  <%= @discontinue_event.transport_type_id %>
-</p>
+
 <p><%= link_to "Show Figures For This Event", '/figures/event_figures/'+@discontinue_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>
 

@@ -1,4 +1,21 @@
 <p>
+<% prev = Event.find_by_id(@mail_event.id-1) %>
+<% if !prev.nil? %>
+<%= link_to "<< Previous", prev %>
+<% end %>
+<% if prev.nil? %>
+<< Previous
+<% end %>
+<% nexte = Event.find_by_id(@mail_event.id+1) %>
+<% if !nexte.nil? %>
+<%= link_to "Next >>", nexte %>
+<% end %>
+<% if nexte.nil? %>
+Next >>
+<% end %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @mail_event.type %>
 </p>
@@ -30,12 +47,15 @@
 
 <p>
   <strong>Price:</strong>
-  $<%= @mail_event.price %>
+  <%= Helper.decimal_as_currency(@mail_event.price) %>
 </p>
 
 <p>
   <strong>Time of Entry:</strong>
   <%= @mail_event.created_at %>
 </p>
+
+
+
 <p><%= link_to "Show Figures For This Event", '/figures/event_figures/'+@mail_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>

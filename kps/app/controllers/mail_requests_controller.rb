@@ -109,6 +109,7 @@ class MailRequestsController < ApplicationController
       format.html { redirect_to mail_requests_url }
       format.json { head :no_content }
     end
+    Event.where
   end
 
   private
