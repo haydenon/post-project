@@ -60,11 +60,12 @@ class MailRoutesController < ApplicationController
   # PATCH/PUT /mail_routes/1
   # PATCH/PUT /mail_routes/1.json
   def update
+    orig_margin = @mail_route.margin
     respond_to do |format|
       if @mail_route.update(mail_route_params)
 
         #Only fire if updated
-        if (@mail_route.margin != params[:mail_route][:margin]) then
+        if !(Helper.costs_same(orig_margin, params[:mail_route][:margin].to_f)) then
         PriceEvent.create!(:route_id => @mail_route.id,:margin => @mail_route.margin, :origin_id => @mail_route.to_id, :destination_id => @mail_route.from_id, :priority_id => @mail_route.priority_id)       
         end
 

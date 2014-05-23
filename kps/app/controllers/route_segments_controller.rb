@@ -45,15 +45,17 @@ class RouteSegmentsController < ApplicationController
   # PATCH/PUT /route_segments/1
   # PATCH/PUT /route_segments/1.json
   def update
+    orig_v_cost = @route_segment.costVolume
+    orig_w_cost = @route_segment.costWeight
     respond_to do |format|
       if @route_segment.update(route_segment_params)
-
+        
         if(((@route_segment.active) != (params[:route_segment][:active])) && !(@route_segment.active)) then
           DiscontinueEvent.create!(:route_id => @route_segment.id, :origin_id => @route_segment.from_id, :destination_id => @route_segment.to_id, :transport_company_id => @route_segment.company.id)
         end
 
         
-        if ((@route_segment.costVolume != params[:route_segment][:costVolume]) or (@route_segment.costWeight != params[:route_segment][:costWeight])) then
+        if (!(Helper.costs_same(orig_v_cost , params[:route_segment][:costVolume].to_f)) or !(Helper.costs_same(orig_w_cost , params[:route_segment][:costWeight].to_f))) then
               CostEvent.create!(:origin_id => @route_segment.from_id, :destination_id => @route_segment.to_id,
                 :route_id => @route_segment.id,:costWeight => @route_segment.costWeight, :costVolume =>@route_segment.costVolume,
                 :transport_company_id => @route_segment.company.id, :depart_day => @route_segment.day,
