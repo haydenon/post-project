@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @mail_event.type %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @mail_event.origin_id %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @mail_event.destination_id %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @mail_event.weight %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @mail_event.volume %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @mail_event.priority_id %>
+</p>
+
+<p>
+  <strong>Price per gram:</strong>
+  <%= @mail_event.price_per_gram %>
+</p>
+
+<p>
+  <strong>Price per cubic cm:</strong>
+  <%= @mail_event.price_per_cubic_cm %>
+</p>
+
+<p>
+  <strong>Transport company:</strong>
+  <%= @mail_event.transport_company_id %>
+</p>
+
+<p>
+  <strong>Transport type:</strong>
+  <%= @mail_event.transport_type_id %>
+</p>
+
+<p>
+  <strong>Depart day:</strong>
+  <%= @mail_event.depart_day %>
+</p>
+
+<p>
+  <strong>Depart frequency:</strong>
+  <%= @mail_event.depart_frequency %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @mail_event.duration %>
+</p>
+
+<%= link_to 'Back', events_path %>

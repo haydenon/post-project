@@ -1,4 +1,8 @@
 Kps::Application.routes.draw do
+  get "discontinue_event/show"
+  get "cost_event/show"
+  get "price_event/show"
+  get "mail_event/show"
   devise_for :users
   resources :events
 
