@@ -1,14 +1,17 @@
 <h1>Events</h1>
 
+<p>
+  <strong>Events Processed:</strong>
+  <%= @events_num %>
+</p>
+  
 <table>
   <thead>
     <tr>
 	  <th>Date Created</th>
       <th>Type</th>
 	  <th>Description (TODO)</th> 
-      <th></th>
-      <th></th>
-      <th></th>
+	  <th></th>
     </tr>
   </thead>
 
@@ -17,7 +20,7 @@
       <tr>
 		<td><%= Helper.time_format(event.created_at) %></td>
         <td><%= event.type %></td>
-		<td></td>
+		<td>description</td>
         <td><%= link_to 'Details', event %></td>
       </tr>
     <% end %>
@@ -26,3 +29,4 @@
 
 <br>
 
+<%= link_to 'Back to Figures', figures_path %>
