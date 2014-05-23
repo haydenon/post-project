@@ -62,5 +62,5 @@
   <strong>Duration:</strong>
   <%= @cost_event.duration %> hour(s)
 </p>
-<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@event.id.to_s %></p>
+<p><%= link_to "Show Figures For This Event", 'figures/event_figures/'+@cost_event.id.to_s %></p>
 <%= link_to 'Back', events_path %>
